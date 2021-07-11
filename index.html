@@ -13,20 +13,26 @@
             <div class = "form-box">
                 <div class = "input-section">
                     <label for="amount">Loan amount you would like to borrow</label><br>
-                    <input type="text"  ng-model = "amount" id="amount"
+                    <span class="dollar">$</span>
+                    <input type="text"  
+                    ng-model = "repayment.amount" id="amount" 
+                    ng-change = "repayment.calculateRepayment()"
                     class="input-element">
                 </div>
                 
                 <div class = "input-section">
                     <label for="duration">Loan Term (Years)</label><br>
-                    <input type="text" name="duration"
-                    class="input-element" id="duration" ng-model = "duration">
+                    <span>&nbsp&nbsp</span><input type="text" name="duration"
+                    class="input-element" id="duration" ng-model = "repayment.duration"
+                    ng-change = "repayment.calculateRepayment()">
                 </div>
                
                 <div class = "input-section">
                     <label for="interest">Interest(p.a)</label><br>
-                    <input type="text" name="interest"
-                    class="input-element" id="interest" ng-model = "interest">
+                     <span>&nbsp&nbsp</span><input type="text" name="interest"
+                    class="input-element" id="interest" ng-model = "repayment.interest"
+                    ng-change = "repayment.calculateRepayment()">
+                    <span class="percentage">%</span>
                 </div>
                 
               <!--   <select name="banks" class="form-element" ng-model="selectedName" ng-options="bank.name for bank in repayment.banks">
@@ -36,10 +42,18 @@
                 <input type="text"  ng-model = "income"
                  placeholder="Income" class="form-element"><br>  
                 -->
+
                 <div class = "input-section">
-                    <button class = "input-button">Monthly</button>
-                    <button class = "input-button">Fortnightly</button>
-                    <button class = "input-button">Weekly</button>
+                    <label>Repayment Type</label><br>
+                    <button class = "input-button" id="monthly" 
+                    ng-click = "repayment.setRepaymentType('Monthly')"
+                    style = "background-color: {{repayment.monthlyPaymentColor}}">Monthly</button>
+                    <button class = "input-button"
+                    ng-click = "repayment.setRepaymentType('FortNightly')"
+                    style = "background-color: {{repayment.fortNightlyPaymentColor}}">FortNightly</button>
+                    <button class = "input-button" 
+                    ng-click = "repayment.setRepaymentType('Weekly')" 
+                    style = "background-color: {{repayment.weeklyPaymentColor}}">Weekly</button>
                 </div>
                 
               <!--   <button class="button" ng-click = "repayment.calculateRepayment(selectedName.name, amount, duration)">Calculate Monthly Repayments</button> -->
@@ -49,25 +63,34 @@
             <div class="result-box" ng-model = "monthlyPayment">
                <div class = "result-display">
                     <div class = "result-section">
-                    <label>Interest payment you will make</label><br>
-                    <div class = "result"></div>
+                    <label>{{repayment.repaymentType}} Interest Payment</label><br>
+                    <div class = "result"  ng-model="repayment.monthlyPayment" >
+                        <span class="dollar">$</span>
+                        <span class="result-values">{{repayment.payment}}</span></div>
                     </div>
                    
                     <div class = "result-section">
-                        <label>Total Loan payment you will make</label><br>
-                        <div class = "result"></div>
+                        <label>Total Loan</label><br>
+                        <div class = "result" ng-model = "repayment.totalLoanPayment">
+                        <span class="dollar">$</span>
+                        <span class="result-values">{{repayment.totalLoanPayment}}</span>
+                        </div>
+                      
                     </div>
 
                     <div class = "result-section">
-                        <label>Total Interest payment you will make</label><br>
-                        <div class = "result"></div>
+                        <label>Total Interest Charged</label><br>
+                        <div class = "result" ng-model = "repayment.totalInterestCharged">
+                        <span class="dollar">$</span>
+                        <span class="result-values">{{repayment.totalInterestCharged}}</span>
+                        </div>
                     </div>
                </div>                       
             </div>
            
          <!--  <h3 ng-hide={{repayment.monthlyPayment}}>Monthly Payment : {{repayment.monthlyPayment}}</h3>
                      <h3>Bank balance :  {{income - repayment.monthlyPayment}}</h3> -->
-    
+    </div>
     <div class = "graph-area">
        <p> Graphical Information </p>
      </div>     
