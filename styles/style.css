@@ -4,6 +4,9 @@
     box-sizing: border-box;
  }
 
+ body {
+    background-color: #eeeeee;
+ }
 /* Header*/
 header {
     text-align: center;
@@ -17,12 +20,14 @@ header {
     width: 50%;
     float: left;
 }
-.form-box{
+.form-box, .result-display {
     margin: 10px;
+    border-radius: 10px;
+    background-color: #dddddd;
     
 }
 .input-section {
-    width: 50%;
+    width: 70%;
    /* border: 2px solid black;*/
     padding: 10px;
     margin: auto;
@@ -44,12 +49,8 @@ header {
     float: left;
 }
 
-.result-display {
-    margin: 10px;
-}
-
 .result-section{
-     width: 50%;
+     width: 70%;
    /* border: 2px solid black;*/
     padding: 10px;
     margin: auto;
@@ -84,5 +85,5 @@ header {
 }
 
 #monthly {
-   
+
 }
