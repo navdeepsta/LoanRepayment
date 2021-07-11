@@ -1,0 +1,72 @@
+*{
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+/* Header*/
+header {
+    text-align: center;
+    font-size: 36px;
+    border: 2px solid black;
+}
+    
+/* Input Area*/       
+.input-box{
+    border: 2px solid black;
+    width: 50%;
+    float: left;
+}
+.form-box{
+    margin: 10px;
+    
+}
+.input-section {
+    width: 50%;
+    border: 2px solid black;
+    padding: 10px;
+    margin: auto;
+}
+.input-element {
+    border: 2px solid black;
+}
+.input-button {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+/*Result Area*/
+.result-box{
+    border: 2px solid black;
+    width: 50%;
+    float: left;
+}
+
+.result-display {
+    margin: 10px;
+}
+
+.result-section{
+     width: 50%;
+    border: 2px solid black;
+    padding: 10px;
+    margin: auto;
+}
+.result {
+    border: 1px solid black;
+    height: 40px;
+}
+
+/*Grapgh Area*/
+.graph-area {
+    border: 2px solid black;
+    clear: both;
+    height: 400px;
+}
+
+.graph-area p {
+    position: relative;
+    font-size: 72px;
+    left: 200px;
+    top: 100px;
+}

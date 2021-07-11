@@ -4,87 +4,74 @@
     <title>Loan Repayment</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <style>
-        *{
-            border: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        h1{
-            text-align: center;
-            margin-top :0;
-            background-color: #444444;
-            color: #cccccc;
-        }
-        input, select {
-            border : 2px solid orange;
-            width: 100%;
-        }
-    
-        .form-element, .button{
-           padding : 10px;
-           margin : 5px;
-        }
-
-        .container {
-            float: left;
-        }
-
-        .button {
-            padding: 10px;
-            background-color: orange;
-        }
-        .left-container {
-            width: 50%;
-            float: left;
-        }
-      .message { 
-        font-size: 1.3em; 
-        font-weight: bold; 
-        width: 46%;
-        margin-left : 20px;
-        margin-top: 5px;
-        background-color: orange;
-        padding: 10px;
-        float: left;
-    }
-
-    </style>
+    <link rel="stylesheet" href="styles/style.css">
   </head>
 <body ng-app = "LoanRepaymentApp">
     <div  ng-controller = "RepaymentController as repayment">
-     <h1>Loan Repayment Calculater</h1>
-        <div class = "left-container">
-            <input type="text"  ng-model = "amount"
-             placeholder="Amount" class="form-element"><br>
-            
-            <input type="text" name="duration" class="form-element" id="duration" ng-model = "duration"
-             placeholder="Duration in Years"><br>
+     <header>Loan Repayment Calculater</header>
+        <div class = "input-box">
+            <div class = "form-box">
+                <div class = "input-section">
+                    <label for="amount">Loan amount you would like to borrow</label><br>
+                    <input type="text"  ng-model = "amount" id="amount"
+                    class="input-element">
+                </div>
+                
+                <div class = "input-section">
+                    <label for="duration">Loan Term (Years)</label><br>
+                    <input type="text" name="duration"
+                    class="input-element" id="duration" ng-model = "duration">
+                </div>
+               
+                <div class = "input-section">
+                    <label for="interest">Interest(p.a)</label><br>
+                    <input type="text" name="interest"
+                    class="input-element" id="interest" ng-model = "interest">
+                </div>
+                
+              <!--   <select name="banks" class="form-element" ng-model="selectedName" ng-options="bank.name for bank in repayment.banks">
+                    <option value="">Select Bank</option>
+                </select><br>
+                  
+                <input type="text"  ng-model = "income"
+                 placeholder="Income" class="form-element"><br>  
+                -->
+                <div class = "input-section">
+                    <button class = "input-button">Monthly</button>
+                    <button class = "input-button">Fortnightly</button>
+                    <button class = "input-button">Weekly</button>
+                </div>
+                
+              <!--   <button class="button" ng-click = "repayment.calculateRepayment(selectedName.name, amount, duration)">Calculate Monthly Repayments</button> -->
+            </div>
+        </div>
 
-            
-            <select name="banks" class="form-element" ng-model="selectedName" ng-options="bank.name for bank in repayment.banks">
-                <option value="">Select Bank</option>
-               <!--  <option value="">Select Bank</option>    
-                <option ng-repeat = "bank in repayment.banks" value="{{x.value}}">{{x.name}}</option> -->
-            </select><br>
-              
-            <input type="text"  ng-model = "income"
-             placeholder="Income" class="form-element"><br>  
-           
-            
-            <button class="button" ng-click = "repayment.calculateRepayment(selectedName.name, amount, duration)">Calculate Monthly Repayments</button>
-          
-          </div>
-            <div class="form-group message right-container" ng-model = "monthlyPayment">
-               <!-- Your message can go here. -->
-                <h3 ng-hide={{repayment.monthlyPayment}}>Monthly Payment : {{repayment.monthlyPayment}}</h3>
-                <h3>Bank balance :  {{income - repayment.monthlyPayment}}</h3>
-            
+            <div class="result-box" ng-model = "monthlyPayment">
+               <div class = "result-display">
+                    <div class = "result-section">
+                    <label>Interest payment you will make</label><br>
+                    <div class = "result"></div>
+                    </div>
+                   
+                    <div class = "result-section">
+                        <label>Total Loan payment you will make</label><br>
+                        <div class = "result"></div>
+                    </div>
+
+                    <div class = "result-section">
+                        <label>Total Interest payment you will make</label><br>
+                        <div class = "result"></div>
+                    </div>
+               </div>                       
             </div>
            
-      
-         
-    </div>
+         <!--  <h3 ng-hide={{repayment.monthlyPayment}}>Monthly Payment : {{repayment.monthlyPayment}}</h3>
+                     <h3>Bank balance :  {{income - repayment.monthlyPayment}}</h3> -->
+    
+    <div class = "graph-area">
+       <p> Graphical Information </p>
+     </div>     
+    
 <script src = "scripts/angular.min.js"></script>
 <script src = "scripts/app.js"></script>
 </body>
