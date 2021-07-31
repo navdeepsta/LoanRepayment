@@ -12,28 +12,40 @@
         <div class = "input-box">
             <div class = "form-box">
                 <div class = "input-section">
+
                     <label for="amount">Loan amount you would like to borrow</label><br>
-                    <input type="text"  
-                    ng-model = "repayment.amount" id="amount" 
-                    ng-change = "repayment.calculateRepayment()"
-                    class="input-element">
+                    <div class = "input-unit">
+                            
+                       <!--  <div><span class="percentage">$</span></div> -->
+                        <input type="text"  
+                        ng-model = "repayment.amount" id="amount" 
+                        ng-change = "repayment.calculateRepayment()"
+                        class="input-element">
+                    </div>
                 </div>
                 
                 <div class = "input-section">
                     <label for="duration">Loan Term (Years)</label><br>
-                    <input type="text" name="duration"
-                    class="input-element" id="duration" ng-model = "repayment.duration"
-                    ng-change = "repayment.calculateRepayment()">
+                    <div class = "input-unit">
+                            
+                       <!--  <div></div> -->
+                        <input type="text" name="duration"
+                        class="input-element small" id="duration" ng-model = "repayment.duration"
+                        ng-change = "repayment.calculateRepayment()">
+                    </div>
                 </div>
                
                 <div class = "input-section">
-                    <label for="interest">Interest(p.a)</label><br>
-                    <input type="text" name="interest"
-                    class="input-element" id="interest" ng-model = "repayment.interest"
-                    ng-change = "repayment.calculateRepayment()">
-                    <span class="percentage">%</span>
+                    <label for="interest">Interest Plus Principle(p.a%)</label><br>
+                    <div class = "input-unit">
+                            
+                       
+                        <input type="text" name="interest"
+                        class="input-element small" id="interest" ng-model = "repayment.interest"
+                        ng-change = "repayment.calculateRepayment()">
+                         <!-- <div><span class="percentage">%</span></div> -->
                 </div>
-                
+                </div>
               <!--   <select name="banks" class="form-element" ng-model="selectedName" ng-options="bank.name for bank in repayment.banks">
                     <option value="">Select Bank</option>
                 </select><br>
@@ -62,7 +74,7 @@
             <div class="result-box" ng-model = "monthlyPayment">
                <div class = "result-display">
                     <div class = "result-section"> 
-                    <label>{{repayment.repaymentType}} Interest Payment</label><br>
+                    <label>{{repayment.repaymentType}} Payment you will make</label><br>
                     <div class = "result" >
                         <span class="dollar">$</span>
                         <span class="result-values">{{repayment.payment}}</span></div>
