@@ -19,6 +19,8 @@
 
 .input-element {
     width: 50%;
+    font-size: 1.3rem;
+    
 }
 
 .small {
@@ -31,15 +33,20 @@ label {
 }
 
 .result-values {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: darkgreen;
     font-family: monospace;
     font-weight: bold;
+    
 }
 
+.result-section {
+    margin-bottom: 20px;
+}
 .dollar {
     font-weight: bold;
     font-size: 1.5rem;
+    margin-left: 40px;
  }
 
  .input-button {
@@ -54,7 +61,7 @@ label {
     padding: 5px 0px;
   }
   
-  .input-element-container input {
+.input-element-container input {
           border-top-style: hidden;
           border-right-style: hidden;
           border-left-style: hidden;
@@ -63,8 +70,6 @@ label {
   }
 
  
-    input:focus {
+input:focus {
         outline: none;
-      
-  
 }
