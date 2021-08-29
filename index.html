@@ -3,138 +3,161 @@
   <head>
     <title>Loan Repayment</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    
 
   </head>
 <body ng-app = "LoanRepaymentApp">
     <div  ng-controller = "RepaymentController as repayment">
-     <header>Loan Repayment Calculater</header>
-        <div class = "input-box">
-            <div class = "form-box">
-                <div class = "input-section">
-                    <table>
-                        <tr>
-                            <td colspan="2"> 
-                                <label for="amount">Loan amount you would like to borrow</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td > 
-                                <span class = "dollar">$</span>
-                            </td>
-                            <td>
-                                
-                                
-                                   <!--  <div><span class="percentage">$</span></div> -->
-                                    <input type="text"  
-                                    ng-model = "repayment.amount" id="amount" 
-                                    ng-change = "repayment.calculateRepayment()"
-                                    class="input-element">
-                                
-                            </td>
-                        </tr>
-                    </table>
-                </div>
 
-                <div class = "input-section">
-                    <table>
-                        <tr>
-                            <td colspan="2"> 
-                                <label for="duration">Loan Term (Years)</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td > 
-                               
-                            </td>
-                            <td>
-                                
-                                <!--  <div></div> -->
-                                    <input type="text" name="duration"
-                                    class="input-element small" id="duration" ng-model = "repayment.duration"
-                                    ng-change = "repayment.calculateRepayment()">
-                                
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                
-                <div class = "input-section">
-                    <table id = "principle">
-                        <tr>
-                            <td colspan="2"> 
-                               <label for="interest">Interest Plus Principle(p.a%)</label>
-                            </td>
-                        </tr>
-                        <tr>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="images/Icon_home.png" alt="" width="30" height="24" class="d-inline-block align-text-top">  
+                <span id="loan-title">Loan Repayment Calculater </span>
+            </a>
+              
+            </div>
+          </nav>    
+
+        <!-- Main Content -->
+        <div class="container ">
+            <div class="row">
+              <div class="col">
+                <div class = "input-box">
+                    <div class = "form-box">
+                        <div class = "input-section">
+                            <table>
+                                <tr>
+                                    <td colspan="2"> 
+                                        <label for="amount">Loan amount you would like to borrow</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="input-element-container">
+                                            <span>$</span>
+                                            <input type="text"
+                                            ng-model = "repayment.amount" id="amount" 
+                                            ng-change = "repayment.calculateRepayment()"
+                                            class="input-element">
+                                          </div>
+                                           <!--  <div><span class="percentage">$</span></div> -->
+                                           
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+        
+                        <div class = "input-section">
+                            <table>
+                                <tr>
+                                    <td colspan="2"> 
+                                        <label for="duration">Loan Term (Years)</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td > 
+                                       
+                                    </td>
+                                    <td>
+                                        
+                                        <!--  <div></div> -->
+                                            <input type="text" name="duration"
+                                            class="input-element small" id="duration" ng-model = "repayment.duration"
+                                            ng-change = "repayment.calculateRepayment()">
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class = "input-section">
+                            <table id = "principle">
+                                <tr>
+                                    <td colspan="2"> 
+                                       <label for="interest">Interest Plus Principle(p.a%)</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  
+                                    <td>
+                                      
+                                        <!--  <div></div> -->
+                                            <input type="text" name="interest"
+                                            class="input-element small" id="interest" ng-model = "repayment.interest"
+                                            ng-change = "repayment.calculateRepayment()"><span class = "percentage">%</span>
+                                       
+                                    </td>
+                                   
+                                </tr>
+                            </table>
+                        </div>
+                       
+                        
+                      <!--   <select name="banks" class="form-element" ng-model="selectedName" ng-options="bank.name for bank in repayment.banks">
+                            <option value="">Select Bank</option>
+                        </select><br>
                           
-                            <td>
-                              
-                                <!--  <div></div> -->
-                                    <input type="text" name="interest"
-                                    class="input-element small" id="interest" ng-model = "repayment.interest"
-                                    ng-change = "repayment.calculateRepayment()"><span class = "percentage">%</span>
-                               
-                            </td>
+                        <input type="text"  ng-model = "income"
+                         placeholder="Income" class="form-element"><br>  
+                        -->
+        
+                        <div class = "input-section">
+                            <label>Repayment Type</label><br>
+                            <button class = "input-button" id="monthly" 
+                            ng-click = "repayment.setRepaymentType('Monthly')"
+                            style = "background-color: {{repayment.monthlyPaymentColor}}">Monthly</button>
+                            <button class = "input-button"
+                            ng-click = "repayment.setRepaymentType('FortNightly')"
+                            style = "background-color: {{repayment.fortNightlyPaymentColor}}">FortNightly</button>
+                            <button class = "input-button" 
+                            ng-click = "repayment.setRepaymentType('Weekly')" 
+                            style = "background-color: {{repayment.weeklyPaymentColor}}">Weekly</button>
+                        </div>
+                        
+                      <!--   <button class="button" ng-click = "repayment.calculateRepayment(selectedName.name, amount, duration)">Calculate Monthly Repayments</button> -->
+                    </div>
+                </div>
+        
+              </div>
+              <div class="col">
+                <div class="result-box" ng-model = "monthlyPayment">
+                    <div class = "result-display">
+                         <div class = "result-section"> 
+                         <label>{{repayment.repaymentType}} Payment you will make</label><br>
+                         <div class = "result" >
+                             <span class="dollar">$</span>
+                             <span class="result-values">{{repayment.payment}}</span></div>
+                         </div>
+                        
+                         <div class = "result-section">
+                             <label>Total Loan</label><br>
+                             <div class = "result" ng-model = "repayment.totalLoanPayment">
+                             <span class="dollar">$</span>
+                             <span class="result-values">{{repayment.totalLoanPayment}}</span>
+                             </div>
                            
-                        </tr>
-                    </table>
-                </div>
-               
-                
-              <!--   <select name="banks" class="form-element" ng-model="selectedName" ng-options="bank.name for bank in repayment.banks">
-                    <option value="">Select Bank</option>
-                </select><br>
-                  
-                <input type="text"  ng-model = "income"
-                 placeholder="Income" class="form-element"><br>  
-                -->
-
-                <div class = "input-section">
-                    <label>Repayment Type</label><br>
-                    <button class = "input-button" id="monthly" 
-                    ng-click = "repayment.setRepaymentType('Monthly')"
-                    style = "background-color: {{repayment.monthlyPaymentColor}}">Monthly</button>
-                    <button class = "input-button"
-                    ng-click = "repayment.setRepaymentType('FortNightly')"
-                    style = "background-color: {{repayment.fortNightlyPaymentColor}}">FortNightly</button>
-                    <button class = "input-button" 
-                    ng-click = "repayment.setRepaymentType('Weekly')" 
-                    style = "background-color: {{repayment.weeklyPaymentColor}}">Weekly</button>
-                </div>
-                
-              <!--   <button class="button" ng-click = "repayment.calculateRepayment(selectedName.name, amount, duration)">Calculate Monthly Repayments</button> -->
+                         </div>
+     
+                         <div class = "result-section">
+                             <label>Total Interest Charged</label><br>
+                             <div class = "result" ng-model = "repayment.totalInterestCharged">
+                             <span class="dollar">$</span>
+                             <span class="result-values">{{repayment.totalInterestCharged}}</span>
+                             </div>
+                         </div>
+                    </div>                       
+                 </div>
+              </div>
             </div>
-        </div>
-
-            <div class="result-box" ng-model = "monthlyPayment">
-               <div class = "result-display">
-                    <div class = "result-section"> 
-                    <label>{{repayment.repaymentType}} Payment you will make</label><br>
-                    <div class = "result" >
-                        <span class="dollar">$</span>
-                        <span class="result-values">{{repayment.payment}}</span></div>
-                    </div>
-                   
-                    <div class = "result-section">
-                        <label>Total Loan</label><br>
-                        <div class = "result" ng-model = "repayment.totalLoanPayment">
-                        <span class="dollar">$</span>
-                        <span class="result-values">{{repayment.totalLoanPayment}}</span>
-                        </div>
-                      
-                    </div>
-
-                    <div class = "result-section">
-                        <label>Total Interest Charged</label><br>
-                        <div class = "result" ng-model = "repayment.totalInterestCharged">
-                        <span class="dollar">$</span>
-                        <span class="result-values">{{repayment.totalInterestCharged}}</span>
-                        </div>
-                    </div>
-               </div>                       
-            </div>
+          </div>
+    
+        
+      
            
          <!--  <h3 ng-hide={{repayment.monthlyPayment}}>Monthly Payment : {{repayment.monthlyPayment}}</h3>
                      <h3>Bank balance :  {{income - repayment.monthlyPayment}}</h3> -->
